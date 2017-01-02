@@ -1,0 +1,48 @@
+\documentclass[a4paper,11pt]{article}
+
+%\usepackage[utf8]{inputenc} % use UTF-8 as input encoding - not necessary with xelatex
+\usepackage[T1]{fontenc} % make non-ASCII characters cut&pastable in PDF
+\usepackage{lmodern} % easiest way to get outline fonts with T1 encoding
+\usepackage[english=american]{csquotes} % automatic quotation style
+\usepackage[american]{babel}
+
+\usepackage{amsmath,amssymb} % math
+\usepackage{caption} % For caption*
+\usepackage[hidelinks, colorlinks=true]{hyperref} % Make links from things
+
+\usepackage{graphicx} % images
+
+% Setup the page geometry
+\usepackage{geometry}
+%\usepackage[a4paper,margin=5cm,top=3cm,bottom=3cm,left=2.7cm,right=2.7cm]{geometry}
+
+\title{Aursec\\A blockchain aproach to securing software packages}
+\author{Bennett Piater \& Lukas Krismer\\Vertiefungsseminar}
+\date{\today}
+
+\begin{document}
+  %%% Boilerplate
+  \begin{titlepage}
+    \maketitle
+    \thispagestyle{empty}
+  \end{titlepage}
+
+  \pagenumbering{roman}
+  \begin{abstract}
+  \end{abstract}
+
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \pagebreak
+
+  %%% Content starts here
+  \pagenumbering{arabic}
+
+  %%% Content ends here
+  \pagebreak
+  \pagenumbering{Roman}
+  \bibliographystyle{plain}
+  \bibliography{Literature.bib}
+
+\end{document}
