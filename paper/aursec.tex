@@ -13,20 +13,26 @@
 \usepackage{graphicx} % images
 
 % Setup the page geometry
-\usepackage{geometry}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 %\usepackage[a4paper,margin=5cm,top=3cm,bottom=3cm,left=2.7cm,right=2.7cm]{geometry}
 
-\title{Aursec\\A blockchain aproach to securing software packages}
-\author{Bennett Piater \& Lukas Krismer\\Vertiefungsseminar}
+
+
+\title{Aursec}
+\newcommand{\titlesub}{A blockchain aproach to securing software packages }
+\author{Bennett Piater \& Lukas Krismer}
+\newcommand{\leader}{Christian Sillaber}
+\newcommand{\university}{University of Innsbruck}
+\newcommand{\course}{Bachelor thesis}
 \date{\today}
 
 \begin{document}
   %%% Boilerplate
-  \begin{titlepage}
-    \maketitle
-    \thispagestyle{empty}
-  \end{titlepage}
+  \thispagestyle{empty}
 
+  %frontpage
+  \input{frontpage.tex}
+  
   \pagenumbering{roman}
   \begin{abstract}
   \end{abstract}
@@ -40,6 +46,7 @@
   \pagenumbering{arabic}
 
   \section{Introduction}
+  The linux distribution Arch has one of the most active communities 
 
   \section{The problem}
 
