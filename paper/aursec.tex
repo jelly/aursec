@@ -35,9 +35,12 @@
 
   %frontpage
   \input{frontpage.tex}
-  
-  \pagenumbering{roman}
+
+  % TODO: Eidesstaatliche Erklärung
+
+  \pagenumbering{Roman}
   \begin{abstract}
+  % TODO
   \end{abstract}
 
   \tableofcontents
@@ -49,39 +52,46 @@
   \pagenumbering{arabic}
 
   \section{Introduction}
-  The linux distribution Arch has one of the most active communities. This is the reason why there was the need for a place, where users could upload their own packages in a repository. ftp://ftp.archlinux.org/income was born. But the packages where not available for other users till a Package Maintainer atopted them. The progression were the Trusted User Repositories, where some users where allowed to host their own repositories for anyone to use. On this base the AUR (Arch User Repository) was evolved. Everybody is allowed to upload packages, without any checks, to the AUR and everyone may download them. But the big usability has a disadvantage: security.  \cite{wiki:AUR}
-  % TODO: what else?
-  \section{The problem}
+  The linux distribution Arch has one of the most active communities. This is the reason why there was the need for a place, where users could upload their own packages in a repository.
+  ftp://ftp.archlinux.org/income was born. But the packages where not available for other users till a Package Maintainer atopted them.
+  The progression were the Trusted User Repositories, where some users where allowed to host their own repositories for anyone to use. On this base the AUR (Arch User Repository) was evolved.
+  Everybody is allowed to upload packages, without any checks, to the AUR and everyone may download them. But the big usability has a disadvantage: security. \cite{wiki:AUR} % TODO: re-formulate :P
+
+  % Mention that the AUR is similar to e.g. npm, PyPI, ruby gems, etc.
+  % TODO: What else? --- we should probably re-write the introduction at the end...
+
+  \section{Security Issues of the AUR}
+  \input{security_issues}
   % BENNETT
-  \section{The solution}
-    \subsection{Core solution}
-    % extend Workflow2.jpeg  and intigrate workflow.png int the discription ||| LUKAS 
-    \subsection{Detailed description}
+  \section{The Solution}
+    \subsection{Core Solution}
+    % extend Workflow2.jpeg  and intigrate workflow.png int the discription ||| LUKAS
+    % Mention that we appear to be the first to use a blockchain like this
+    \subsection{Detailed Description}
     % aursec-init   ||| LUKAS
     % aursec systemd services  ||| BENNETT
-    % aursec   ||| BENNETT
+    % aursec{,-hash,-verify-hashes}   ||| BENNETT
     % aursec-chain	||| LUKAS
     % TODO: what else
-    \subsection{Additional things}
+    \subsection{Terminal User Interface}
     % TUI  ||| LUKAS
     % TODO: what else?
-    \subsection{Project management}
+    \subsection{Project Management}
     % Timeline  ||| LUKAS
     % TODO: What else?
 
-  \section{What we learned}
-  % RPC API 
-  % Shell Scripte
+  \section{Things we Learned}
   % Ethereum - Solidity
+  % RPC API
+  % Bash as a programming language
   % Python - Urwid
   % TODO: WHAT ELSE?
 
   \section{Evaluation}
-  % Is this already possible to write?? Our Data/ Data from outside ? 
+  % We can probably already talk about our own experience? Our Data/ Data from outside ?
 
   %%% Content ends here
   \pagebreak
-  \pagenumbering{Roman}
   \bibliographystyle{plain}
   \bibliography{Literature.bib}
 
