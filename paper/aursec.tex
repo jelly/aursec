@@ -51,43 +51,41 @@
   %%% Content starts here
   \pagenumbering{arabic}
 
-  \section{Introduction}
+  \section{Introduction}  %(1/2 page)
   The linux distribution Arch has one of the most active communities. This is the reason why there was the need for a place, where users could upload their own packages in a repository.
   ftp://ftp.archlinux.org/income was born. But the packages where not available for other users till a Package Maintainer atopted them.
-  The progression were the Trusted User Repositories, where some users where allowed to host their own repositories for anyone to use. On this base the AUR (Arch User Repository) was evolved.
-  Everybody is allowed to upload packages, without any checks, to the AUR and everyone may download them. But the big usability has a disadvantage: security. \cite{wiki:AUR} % TODO: re-formulate :P
+  The progression were the Trusted User Repositories, where some users where allowed to host their own repositories for anyone to use. On this base the AUR (Arch User Repository) was evolved. The AUR is similar to PyPI (Python), npm (Javascript) and ruby gems (Ruby), where all users can share their tools. The problem by all of them is, that the packages are just checked by the community and by no higher instance. \cite{wiki:AUR} 
 
-  % Mention that the AUR is similar to e.g. npm, PyPI, ruby gems, etc.
-  % TODO: What else? --- we should probably re-write the introduction at the end...
-
-  \section{Security Issues of the AUR}
+  \section{Security Issues of the AUR} %(1 1/2 pages)
   \input{security_issues}
   % BENNETT
-  \section{The Solution}
-    \subsection{Core Solution}
+  \section{The Solution} %(4 1/2 pages)
+    \subsection{Core Solution}  %(1 page)
+    \input{core_solution}
     % extend Workflow2.jpeg  and integrate workflow.png int the discription ||| LUKAS
     % Mention that we appear to be the first to use a blockchain like this
-    \subsection{Detailed Description}
+    \subsection{Detailed Description} %(2 pages)
+    % blockchain   ||| LUKAS
     % aursec-init   ||| LUKAS
     % aursec systemd services  ||| BENNETT
     % aursec{,-hash,-verify-hashes}   ||| BENNETT
     % aursec-chain	||| LUKAS
     % TODO: what else
-    \subsection{Terminal User Interface}
+    \subsection{Terminal User Interface} %(1/2 page)
     % TUI  ||| LUKAS
     % TODO: what else?
-    \subsection{Project Management}
+    \subsection{Project Management} %(1 page)
     % Timeline  ||| LUKAS
     % TODO: What else?
 
-  \section{Things we Learned}
+  \section{Things we Learned} %(1 page)
   % Ethereum - Solidity
   % RPC API
   % Bash as a programming language
   % Python - Urwid
   % TODO: WHAT ELSE?
 
-  \section{Evaluation}
+  \section{Evaluation} %(1 page)
   % We can probably already talk about our own experience? Our Data/ Data from outside ?
 
   %%% Content ends here

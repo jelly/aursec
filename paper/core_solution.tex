@@ -1,0 +1,16 @@
+ % Die Lösung einiger Security-Probleme, ist eine sichere Datenbank, die die Hashs der versionierten Packete beinhaltet. Bevor man ein Packet installiert können der lokal generierte Hash mit jenem aus der Datenbank verglichen werden, um sicherzustellen, das das Packet das selbe wie bei anderen Usern ist. 
+
+ % Um die Datenbank so sicher wie möglich zu gestalten, wird eine Blockchain eingesetzt auf der ein Smart Contract liegt. Dieser smart Contract ermöglicht die Verwendung von Funktionen auf der Blockchain. Mit diesen Funktionen können neue Hashes in die Blockchain geladen werden und es kann der derzeitige Hash eines Paketes und dessen Anzahl abgefragt werden. Hierbei wird garantiert, das von jedem Nutzer für eine Paketversion immer nur ein Hash existiert. Dies ist die erste bekannte Verwendung einer Blockchain für ein solches Problem.
+
+% Der Workflow
+
+% Bild 1 einfügen 
+% Bild 2 einfügen
+
+% 1) Zuerst wird ein PKGBUILD heruntergeladen und in einer Sandbox teilweise ausgeführt. Die so erhaltenen Daten werden anschließend gehashed. 
+% 2) Dann wird der Hash mit dem (current consens) Hash des Paketes aus der Blockchain Verglichen (siehe Bild 2). Wenn diese überein stimmen und die Anzahl der commits über dem Threshold liegt wird \texttt{true} zurückgegeben. Ansonsten kann man selbst entscheiden ob man dem lokal generierten Hash vertrauen will oder nicht. 
+% 3a) Wenn dem Hash vertraut wird kann man sein Paket installieren. Bei dieser Option wird dann der Hash mit der versionierten Packet ID an die Blockchain gesendet und in dieser aufgenommen, insofern dieser User für diese PacketID noch keinen Hash commited hat.
+% 3b) Wenn dem Hash nicht komplett vertraut wird, kann man trotzdem das Packet installieren, schickt aber den Hash nicht an die Blockchain.
+% 3c) Wenn dem Hash nicht vertraut wird, baut man das Packet anschließend nicht.
+% 4) Diese Transaction wird dann an alle Nodes der Blockchain geschickt.
+% 5) Sobald eine der Nodes einen neuen Block mined, wird die Transaktion validiert und in der Blockchain verinnerlicht.
