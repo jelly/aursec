@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-aursec.pdf: aursec.tex
+aursec.pdf: aursec.tex Literature.bib frontpage.tex security_issues.tex
 	latexmk -xelatex -f aursec.tex
 
 

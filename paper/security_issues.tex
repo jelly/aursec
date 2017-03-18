@@ -1,0 +1,37 @@
+Ease of use appears to have been, if not the only, at least the primary design consideration of the Arch User Repository. This creates so many security issues that it is actually quite a task to think through all of them.
+
+% PKGBUILDS
+\subsection*{Local Package Creation}
+One of the most obvious problems is the installation procedure itself.
+The AUR doesn't host binary packages, which is a good thing. Instead, Arch packages are created locally from a bash file, the so-called \texttt{PKGBUILD}, containing metadata like name and version, the URLs and checksums of upstream sources, and functions for the compilation and packaging steps.
+
+The AUR contains these \texttt{PKGBUILDS} and possible patches to be applied to the upstream sources in a git repository per package.
+A package file can be produced by cloning it's repository and using a tool called \texttt{makepkg} \cite{wiki:PackageCreation}, which sources the script, downloads and verifies the sources, and calls the compilation and packaging functions.
+
+This means that users can verify what they are compiling as opposed to blindly trusting binaries created by third-parties, but also that maintainers of AUR packages have a means of executing arbitrary shell comands on users' machines.
+
+This is aggravated by the fact that \texttt{PKGBUILDS} can include a \texttt{.install} file into the built package, which will be executed \emph{as root} when the package is actually installed.
+The risk also increases if so-called \enquote{AUR helpers} are used. These tools assist the users in installing packages from the AUR by automating the steps and behave like package managers.
+Some of them (notably \texttt{aurutils} \cite{gh:aurutils}, which is recommended by the authors) allow the users to inspect these files before continuing, but others are very unsafe in that they execute code before giving users the opportunity to inspect it, or decentivize them from doing so.
+
+\subsection*{The Trust Issue}
+Another problem is that users are not given any reason to trust the maintainers.
+Unlike the official repositories, where maintainers are vetted, packages are (often manually) audited before being accepted, and everything must be signed with a trusted GNU Privacy Guard key, anyone can create an account and submit a new package to the AUR in a few minutes.
+There is no admission procedure or audit system and no GnuPG web of trust in order to minimize the time needed to publish a package or update.
+
+\texttt{makepkg} can verify GnuPG signatures for upstream sources, but the \texttt{PKGBUILD} itself could only be signed by using signed git commits, which is sadly not enforced or even officially recommended --- and not supported by any AUR helper anyway.
+
+Except when using the AUR helper \texttt{bauerbill} \cite{bauerbill}, which provides a basic user-side trust management system, the only way to be maintain reasonable trust is therefore to manually read every single file, which is cumbersome.
+Because only highly security-conscious users are willing to put in so much effort before trusting a \texttt{PKGBUILD}, most users are left vulnerable by the aforementioned issues.
+
+\subsection*{Adopting orphan packages}
+
+
+% Threats:
+\subsection*{VCS Packages: Malicious Upstream}
+\cite{wiki:VCSPackages}
+
+\subsection*{Tampered Packages: Malicious Maintainer}
+
+% TODO: CORAS Threat analysis diagram?
+
