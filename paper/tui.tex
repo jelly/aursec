@@ -1,0 +1,7 @@
+\label{sec:tui}
+Aursec-tui is a python script and is contained in a own aurse-tui package in the AUR. The TUI gives a overview over all mined blocks, their hashes, the miner of the block and eventual transactions which are saved in the block. This script is split in two parts. The first part is needed to gain the data from the blockchain and save it, the other part format the information and display it. To display the results as fast as possible a thread searches the blockchain in the background. The gained data will be displayed after the next refresh. The script offers the user two setting for filtering the results.
+\begin{itemize}
+	\item \texttt{just mine:} just display blocks which where mined by the user himself.
+	\item \texttt{just transactions:} just display blocks with transactions.
+\end{itemize}
+The settings can be combined with the result that all blocks mined by the user with transactions will be displayed.
