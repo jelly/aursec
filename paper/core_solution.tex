@@ -14,3 +14,40 @@
 % 3c) Wenn dem Hash nicht vertraut wird, baut man das Packet anschließend nicht.
 % 4) Diese Transaction wird dann an alle Nodes der Blockchain geschickt.
 % 5) Sobald eine der Nodes einen neuen Block mined, wird die Transaktion validiert und in der Blockchain verinnerlicht.
+
+% Intro
+The solution for a few security-problems is a secure database, which contains hashes of versionized packages. Before a package is installed, the locale generated hash can be compared with the one in the database. This guaranty that the loaded package is the same as the package loaded by most of the other users.
+
+To make the database as safe as possible, a blockchain is used. On this blockchain is a smart contract, which allows to call functions. With one of these functions it is possible to commit hashes of versionized packages. This hash will be saved in the blockchain if this user has not committed a other hash for the same versionized package before. Another function is used to get the current consensus hash and its number of commits of a versionized package. This is the first application which uses a blockchain to secure downloads.
+
+% Workflow
+\subsection*{Workflow}
+\begin{figure}
+	\centering
+		\includegraphics[width=0.6\paperwidth]{Workflow2}
+	\caption{Main Workflow}
+	\label{fig:main_workflow}
+\end{figure}
+
+\begin{figure}
+	\centering
+		\includegraphics[width=0.45\paperwidth]{workflow}
+	\caption{Decision Workflow}
+	\label{fig:decision_workflow}
+\end{figure}
+
+
+\begin{enumerate}
+	\item First of all a \textit{PKGBUILD} is downloaded and partially executed in a virtual area. Then this data get hashed. 
+	\item The resulting local hash becomes compared with the current consensus hash of the versionized package of the blockchain [Figure \ref{fig:decision_workflow}]. 
+	\item Now the workflow splits into 3 ways.
+	\begin{itemize}
+		\item a) The hashes match and the number of commits is over the threshold or the user decides to trust the local generated test. The package is created and installed. \textit{(Followed by step 4.)}
+		\item b) The hashes don't match and/or the number is below the threshold but the user want to create and install the package. \textit{(End of the workflow.)}
+		\item c) The hashes don't match and/or the number is below the threshold and the user doesn't want to create the package. \textit{(End of the workflow.)}
+	\end{itemize}
+	\item The local hash is committed to the blockchain (this is a transaction).
+	\item All nodes of the blockchain-network get the transaction.
+	\item The transaction is contained in the next mined block.
+	\item The block is added to the blockchain.
+\end{enumerate}
