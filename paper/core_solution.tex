@@ -22,6 +22,7 @@ To make the database as safe as possible, a blockchain is used. On this blockcha
 
 % Workflow
 \subsection*{Workflow}
+The following workflow is visualized by Figure \ref{fig:main_workflow}.
 \begin{figure}
 	\centering
 		\includegraphics[width=0.6\paperwidth]{Workflow2}
@@ -40,7 +41,7 @@ To make the database as safe as possible, a blockchain is used. On this blockcha
 \begin{enumerate}
 	\item First of all a \textit{PKGBUILD} is downloaded and partially executed in a virtual area. Then this data get hashed. 
 	\item The resulting local hash becomes compared with the current consensus hash of the versionized package of the blockchain [Figure \ref{fig:decision_workflow}]. 
-	\item Now the workflow splits into 3 ways.
+	\item Now the workflow splits into 3 different paths.
 	\begin{itemize}
 		\item a) The hashes match and the number of commits is over the threshold or the user decides to trust the local generated test. The package is created and installed. \textit{(Followed by step 4.)}
 		\item b) The hashes don't match and/or the number is below the threshold but the user want to create and install the package. \textit{(End of the workflow.)}
