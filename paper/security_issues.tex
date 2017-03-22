@@ -25,6 +25,12 @@ Except when using the AUR helper \texttt{bauerbill} \cite{bauerbill}, which prov
 Because only highly security-conscious users are willing to put in so much effort before trusting a \texttt{PKGBUILD}, most users are left vulnerable by the aforementioned issues.
 
 \subsection*{Adopting orphan packages}
+The trust issue is made even worse by the fact that packages can silently and quickly be taken over by other maintainers due to the orphan/adoption system.
+
+When a maintainer wants to stop maintaing a package, but the package is still useful and actively developed upstream, he has the option to \emph{orphan} it rather than deleting it.
+Orphan packages can be \emph{adopted} by any AUR user, at any time, without delay.
+This feature was designed to minimize update delay, which it does effectively; However, it also makes it easy for malicious agents to take over popular orphaned packages, manipulate them, and immediately orphan them afterwards.
+
 
 
 % Threats:
