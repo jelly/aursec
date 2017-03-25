@@ -3,7 +3,7 @@ Ease of use appears to have been, if not the only, at least the primary design c
 % PKGBUILDS
 \subsection*{Local Package Creation}
 One of the most obvious problems is the installation procedure itself.
-The AUR doesn't host binary packages, which is a good thing. Instead, Arch packages are created locally from a bash file, the so-called \texttt{PKGBUILD}, containing metadata like name and version, the URLs and checksums of upstream sources, and functions for the compilation and packaging steps.
+The AUR doesn't host binary packages, which is a good thing. Instead, Arch packages are created locally from a bash file, the so-called \texttt{PKGBUILD}, containing metadata like name and version, the URLs and checksums of upstream sources, and functions for the compilation andpackaging steps. % TODO: We may want to show an example PKGBUILD somewhere - but where? Maybe as appendix, with reference from here?
 
 The AUR contains these \texttt{PKGBUILDS} and possible patches to be applied to the upstream sources in a git repository per package.
 A package file can be produced by cloning it's repository and using a tool called \texttt{makepkg} \cite{wiki:PackageCreation}, which sources the script, downloads and verifies the sources, and calls the compilation and packaging functions.
@@ -31,13 +31,30 @@ When a maintainer wants to stop maintaing a package, but the package is still us
 Orphan packages can be \emph{adopted} by any AUR user, at any time, without delay.
 This feature was designed to minimize update delay, which it does effectively; However, it also makes it easy for malicious agents to take over popular orphaned packages, manipulate them, and immediately orphan them afterwards.
 
-
+\emph{The above Security issues lead to two concrete attack scenarios:}
 
 % Threats:
 \subsection*{VCS Packages: Malicious Upstream}
-\cite{wiki:VCSPackages}
+In some cases, the user is not adequately protected against malicious (or compromised) upstreams:
+
+The AUR supports so-called \emph{VCS pacakges} \cite{wiki:VCSPackages}, which download sources from a version control system, such as Git or Mercurial, instead of downloading a fixed archive. This relieves the maintainer from updating his \texttt{PKGBUILD} for every new commit.
+\texttt{makepkg} will even automatically calculate the up-to-date version number using e.g. tags and commit numbers.
+
+VCS packages were primarily designed to simplify the installation of up-to-date packages from source, and they do that very well; But they also introduce a big security issue:
+Since the \texttt{PKGBUILD} must not be updated between versions, it cannot contain checksums for the new version, either.
+This means that users don't have a way to verify the authenticity of the source that they are downloading, unless they can trust the upstream himself, meaning that no-one will notice if the upstream is compromised or makes malicious changes.
 
 \subsection*{Tampered Packages: Malicious Maintainer}
+Users are also not adequately protected against malicious maintainers:
+
+Because it's so easy to gain access to a package, e.g. by adopting an orphan or simply by creating it, and nothing is verified or audited before publication, It's easy for a malicious agent to modify a package.
+And because the \texttt{PKGBUILD} is not signed or hashed, users will not notice if the build instructions for a specific package version were modified. This allows targeted attacks:
+
+If the time at which a target will update his machine is known and one has access to an AUR package which he is expected to update, malicious code can somehow be introduced into the corresponding \texttt{PKGBUILD} within that update window.
+This could be as simple as changing the checksum if one also has access to the upstream source code (even a very careful user has no chance of noticing this attack), or executing innocuous code in the install file or \texttt{PKGBUILD} itself.
+
+If the time frame is short, no other AUR user (and thus, \emph{no-one}) would ever notice.
+One could only defend against this with a good local trust model, such as that possible with \texttt{bauerbill}, or manual cryptographic verification of the git commit to the AUR --- assuming that the maintainer signs his commits, which is only very rarely the case.
 
 % TODO: CORAS Threat analysis diagram?
 
