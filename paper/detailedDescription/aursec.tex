@@ -17,7 +17,7 @@ The free 3-level parallelism gained by the pipeline is a very useful advantage i
 Thus, the concurrency is even more important because it allows work to continue in the background while \texttt{aursec} waits for the user. Indeed, the background tasks tend to be finished in most practical situations before the user has had time to inspect the second or third warning. % NOTE: Maybe add an anecdote about how this is similarly good to the bulk-verification of sources in aursync vs yaourt?
 
 \subsubsection{aursec-hash}
-\texttt{aursec-hash} has the simple task of producing an ID (\texttt{$pkgname-$pkgver-$pkgrel}) and a hash from \texttt{PKGBUILD}s.
+\texttt{aursec-hash} has the simple task of producing an ID (\texttt{\$pkgname-\$pkgver-\$pkgrel}) and a hash from \texttt{PKGBUILD}s.
 
 The id could be parsed from the \texttt{.SRCINFO}, which is a plain text file.
 But VCS packages don't have up-to-date version information in their \texttt{PKGBUILD}, which means that it must be interpreted; This is annoying, but we only source the \texttt{PKGBUILD} in a \texttt{firejail} sandbox to minimize the inherent risk of executing foreign turing-complete code.
