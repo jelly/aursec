@@ -1,14 +1,14 @@
 \subsubsection{Blockchain} \label{sec:blockchain}
 The blockchain has to fulfill several requirements. %TODO write description of blockchain
 \begin{itemize}
-	\item The blockchain mainly has to be installed on arch-linux computers. So the installation should be easily on this platform.
+	\item The blockchain mainly has to be installed on arch-linux computers. The installation should be easily on this platform.
 	\item The blockchain has to have a interface, which allows to use the blockchain in background cause the blockchain should be started with a systemd service.
 	\item The blockchain has to support smart contracts for the functional requirements (mainly get/commit hashes).
 	\item The blockchain should support private networks, cause the aursec-network should only contain transactions related to aursec.
-	\item This private network should be easily build.
+	\item This private network should be easy to build.
 \end{itemize}
 
-The blockchain of choice was a ethereum-blockchain. The main reason for this blockchain, are the solidity smart contracts. These contracts are easy to write and understand. 
+The blockchain of choice was a ethereum-blockchain. The main reasons for this blockchain, are the solidity smart contracts. These contracts are easy to write and understand. 
 
 \paragraph*{smart-contracts}
 Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versionized package. 

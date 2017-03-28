@@ -16,9 +16,9 @@
 % 5) Sobald eine der Nodes einen neuen Block mined, wird die Transaktion validiert und in der Blockchain verinnerlicht.
 
 % Intro
-The solution for a few security-problems is a secure database, which contains hashes of versionized packages. Before a package is installed, the locale generated hash can be compared with the one in the database. This guaranty that the loaded package is the same as the package loaded by most of the other users.
+The solution for a few security-problems is a secure database, which contains hashes of versionized packages. Before a package is installed, the locale generated hash can be compared with the one in the database. This guarantee that the loaded package is the same as the package loaded by most of the other users.
 
-To make the database as safe as possible, a blockchain is used. On this blockchain is a smart contract, which allows to call functions. With one of these functions it is possible to commit hashes of versionized packages. This hash will be saved in the blockchain if this user has not committed a other hash for the same versionized package before. Another function is used to get the current consensus hash and its number of commits of a versionized package. This is the first application which uses a blockchain to secure downloads.
+To make the database as safe as possible, a blockchain is used. On this blockchain is a smart contract, which allows to call functions. With one of these functions it's possible to commit hashes of versionized packages. This hash will be saved in the blockchain if this user has not committed a other hash for the same versionized package before. Another function is used to get the current consensus hash and its number of commits of a versionized package. This is the first application which uses a blockchain to secure downloads.
 
 % Workflow
 \subsection*{Workflow}
