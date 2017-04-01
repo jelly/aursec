@@ -4,9 +4,10 @@ Aursec-init is a shellscript which allows the user to create all requirements ju
 % TODO add refs
 \paragraph*{workflow of the initialization:}
 \begin{enumerate}
-	\item Creating needed folders and markers (markers are needed by TODO) and set the right rights.
-	\item Creating the blockchain based on a genesis-block.
-	\item Creating a new user with a random password which is saved in a file.
-	\item Creating the DAG, which is a ~1GB dataset. The DAG is needed for mining the blocks. \cite{wiki:DAG}
-	\item Mine a few blocks to have enough ether to be able to commit a few hashes at the start.
+	\item Create needed folders and markers (markers are needed by TODO)
+	\item Create the blockchain from our genesis block.
+	\item Create a new user with a random password which is saved in a file.
+	\item Create the \emph{Directed Acyclic Graph} for the blockchain, which is a ~1GB dataset. The DAG is needed for mining new blocks. \cite{wiki:DAG}
+	\item Set safe permissions for the above files and folders.
+	\item Mine a few blocks to trigger the synchronization and to have enough ether to be able to commit a few hashes from the start. % TODO: If you use the word ether here, you need to explain it!
 \end{enumerate}
