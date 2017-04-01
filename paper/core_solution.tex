@@ -16,9 +16,9 @@
 % 5) Sobald eine der Nodes einen neuen Block mined, wird die Transaktion validiert und in der Blockchain verinnerlicht.
 
 % Intro
-The solution for a few security-problems is a secure database, which contains hashes of versionized packages. Before a package is installed, the locale generated hash can be compared with the one in the database. This guarantee that the loaded package is the same as the package loaded by most of the other users.
+The solution for a few security-problems is a secure database, which contains hashes of versioned packages. Before a package is installed, the locale generated hash can be compared with the one in the database. This guarantee that the loaded package is the same as the package loaded by most of the other users.
 
-To make the database as safe as possible, a blockchain is used. On this blockchain is a smart contract, which allows to call functions. With one of these functions it's possible to commit hashes of versionized packages. This hash will be saved in the blockchain if this user has not committed a other hash for the same versionized package before. Another function is used to get the current consensus hash and its number of commits of a versionized package. This is the first application which uses a blockchain to secure downloads.
+To make the database as safe as possible, a blockchain is used. On this blockchain is a smart contract, which allows to call functions. With one of these functions it's possible to commit hashes of versioned packages. This hash will be saved in the blockchain if this user has not committed a other hash for the same versioned package before. Another function is used to get the current consensus hash and its number of commits of a versioned package. This is the first application which uses a blockchain to secure downloads.
 
 % Workflow
 \subsection*{Workflow}
@@ -40,7 +40,7 @@ The following workflow is visualized by Figure \ref{fig:main_workflow}.
 
 \begin{enumerate}
 	\item First of all a \textit{PKGBUILD} is downloaded and partially executed in a virtual area. Then this data get hashed. 
-	\item The resulting local hash becomes compared with the current consensus hash of the versionized package of the blockchain [Figure \ref{fig:decision_workflow}]. 
+	\item The resulting local hash becomes compared with the current consensus hash of the versioned package of the blockchain [Figure \ref{fig:decision_workflow}]. 
 	\item Now the workflow splits into 3 different paths.
 	\begin{itemize}
 		\item a) The hashes match and the number of commits is over the threshold or the user decides to trust the local generated test. The package is created and installed. \textit{(Followed by step 4.)}
