@@ -1,20 +1,19 @@
 \subsubsection{Blockchain} \label{sec:blockchain}
-The blockchain has to fulfill several requirements. %TODO write description of blockchain
+The blockchain has to fulfill several requirements: % TODO write description of blockchain AND smart contracts
 \begin{itemize}
-	\item The blockchain mainly has to be installed on arch-linux computers. The installation should be easily on this platform.
-	\item The blockchain has to have a interface, which allows to use the blockchain in background cause the blockchain should be started with a systemd service.
-	\item The blockchain has to support smart contracts for the functional requirements (mainly get/commit hashes).
-	\item The blockchain should support private networks, cause the aursec-network should only contain transactions related to aursec.
-	\item This private network should be easy to build.
+	\item Since we target Arch Linux, it should be easy to install on this platform.
+	\item It needs to provide an API which allows external scripts to work with it.
+	\item It needs to provide smart contracts to maintain the constraints of the hash storage.
+	\item It needs to provide an easy way to create private networks seperate from the main one, because full networks are huge.
 \end{itemize}
 
-The blockchain of choice was a ethereum-blockchain. The main reasons for this blockchain, are the solidity smart contracts. These contracts are easy to write and understand. 
+The blockchain of choice was Ethereum because it is the only production-ready infrastracture providing smart contracts. It even allows them to be written in a high-level language, \emph{Solidity}, which makes them straightforward to write and understand.
 
-\paragraph*{smart contracts}
+\paragraph*{smart contracts} % TODO: I don't think we need to explain the parent contract - rather explain how the contract works? (save the hash with most commits, only allow each user to submit a hash once, etc)
 Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. 
 
 \paragraph*{network}
-Currently the nodes connect to the network over a bootnode. This bootnode runs on a 24/7 server.
+Like other blockchains, the Ethereum network is peer-2-peer, but private networks need to provide their own \emph{bootnode} through which peers announce themselves. Our bootnode is active 24/7 on a DigitalOcean droplet provided by our supervisor.
 
 \paragraph*{interfaces}
-The Ethereum-blockchain uses 2 different interfaces. The IPC (interprocess communication) and the RPC (remote procedure call) interface. The IPC interface of the aursec-blockchain is deactivated by default, cause the user shouldn't have the need of a console which is attached to the running node. The user interact with the blockchain through shellscripts especially aursec-chain and the pythonscript aursec-tui [see \ref{sec:aursec-chain} and \ref{sec:tui} ]. These scripts communicate with the blockchain trough the RPC interface. 
+The Ethereum blockchain provides 2 different interfaces, the IPC (interprocess communication), which provides an interactive javascript shell, and the HTTP RPC (remote procedure call) interface. The IPC interface of our blockchain is deactivated because users don't need to manually use the javascript shell: the only required interaction with the blockchain is through the shell script \texttt{aursec-chain}~\ref{sec:aursec-chain} and the Python script \texttt{aursec-tui}~\ref{sec:tui}. These scripts communicate with the blockchain trough the RPC interface.
