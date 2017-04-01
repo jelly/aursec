@@ -1,17 +1,17 @@
  \subsubsection{aursec-chain}\label{sec:aursec-chain}
-Aursec-chain is a shellscript which allows the user to intergate with the blockchain. The script itself communicate with the blockchain through JSON RPC. To provide the user all needed commands, the script has different arguments.
+\emph{aursec-chain} is a shellscript which allows the user to intergate with the blockchain. The script itself communicates with the blockchain through JSON RPC. To provide the user all needed commands, the script has different arguments.
 
 \paragraph*{mine}
 This argument needs more arguments to work.
 \begin{itemize}
 	\item \texttt{start:} Starts mining.
 	\item \texttt{stop:} Stops mining.
-	\item \texttt{N blocks:} wait till mining is stopped and then mines N blocks.
-	\item \texttt{auto:} this argument is just used by a systemd service to mine blocks periodical.
+	\item \texttt{N blocks:} Wait until mining is stopped and then mines N blocks.
+	\item \texttt{auto:} This command is only used by a systemd timer to mine blocks periodically.
 \end{itemize}
 
 \paragraph*{commit-hash}
-This argument needs two more arguments to work. The first one has to be the versioned package id and the second has to be the local generated hash of the package. The script then sends a transaction to the blockchain (if enough ether is available). This transaction will be verified by the next mined block.
+This argument needs two more arguments to work. The first one has to be the versioned package id and the second has to be the locally generated hash of the package. The script then sends a transaction to the blockchain (if enough ether is available). This transaction will be verified by the next mined block.
 
 \paragraph*{get-hash}
 This argument needs one more argument to work. This argument has to be the versioned package id. Then aursec-chain calls a method which returns the current consensus hash and the number of commits of this hash. 

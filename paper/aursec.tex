@@ -54,9 +54,14 @@
   \pagenumbering{arabic}
 
   \section{Introduction}  %(1/2 page)
-  The linux distribution Arch has one of the most active communities. This is the reason why there was the need for a place, where users could upload their own packages in a repository.
-  ftp://ftp.archlinux.org/income was born. But the packages where not available for other users till a Package Maintainer adopted them.
-  The progression were the Trusted User Repositories, where some users where allowed to host their own repositories for anyone to use. On this base the AUR (Arch User Repository) was evolved. The AUR is similar to PyPI (Python), npm (Javascript) and ruby gems (Ruby), where all users can share their tools. The problem by all of them is, that the packages are just checked by the community and by no higher instance. \cite{wiki:AUR} 
+  The Linux distribution Arch makes it easy to create custom packages and has a very active community. Because of this, there was the need for a place where users could upload their packages for others to use.
+
+  ftp://ftp.archlinux.org/income was created, where packages could be put until maintainers that were willing to do so could adopt them, but this delay was too long, so another solution was needed.
+  The next improvement were the Trusted User Repositories, where some privileged users, which were many more than the maintainers of before, were allowed to host their own repositories for anyone to use. 
+
+  The \emph{Arch User Repository} were the natural evolution: By removing all middlemen, everyone can now upload their packages to one central place. \cite{wiki:AUR}
+
+  The AUR is similar to PyPI (Python), NPM (Javascript) and Ruby gems, where all users can share their packages. They all share the problem that submitted packages are not necessarily audited or even checked by anyone.
 
   \section{Security Issues of the AUR} %(1 1/2 pages)
   \input{security_issues} % BENNETT
