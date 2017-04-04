@@ -1,5 +1,13 @@
 \subsubsection{Blockchain} \label{sec:blockchain}
-The blockchain has to fulfill several requirements: % TODO write description of blockchain AND smart contracts
+\subsubsection*{general}
+
+\paragraph*{Workflow:}
+%TODO
+\paragraph*{Smart Contracts:}
+%TODO
+
+\subsubsection*{specific}
+Our blockchain has to fulfill several requirements: % TODO write description of blockchain AND smart contracts
 \begin{itemize}
 	\item Since we target Arch Linux, it should be easy to install on this platform.
 	\item It needs to provide an API which allows external scripts to work with it.
@@ -10,7 +18,7 @@ The blockchain has to fulfill several requirements: % TODO write description of 
 The blockchain of choice was Ethereum because it is the only production-ready infrastracture providing smart contracts. It even allows them to be written in a high-level language, \emph{Solidity}, which makes them straightforward to write and understand.
 
 \paragraph*{smart contracts} % TODO: I don't think we need to explain the parent contract - rather explain how the contract works? (save the hash with most commits, only allow each user to submit a hash once, etc)
-Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. 
+Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. The Contract allows a user to commit one hash per versioned package. Further commits of hashes of the same versioned package will not be considered. The current consensus of a versioned package is the most often committed hash so the hash of a package is not fixed by the first commit.  
 
 \paragraph*{network}
 Like other blockchains, the Ethereum network is peer-2-peer, but private networks need to provide their own \emph{bootnode} through which peers announce themselves. Our bootnode is active 24/7 on a DigitalOcean droplet provided by our supervisor.
