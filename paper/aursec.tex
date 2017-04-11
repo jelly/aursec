@@ -79,12 +79,20 @@
 
   The \emph{Arch User Repository} were the natural evolution: By removing all middlemen, everyone can now upload their packages to one central place. \cite{wiki:AUR}
 
-  The AUR is similar to PyPI (Python), NPM (Javascript) and Ruby gems, where all users can share their packages. They all share the problem that submitted packages are not necessarily audited or even checked by anyone.
+  The AUR is similar to PyPI (Python), NPM (Javascript) and rubygems.org, where all users can share their packages. They all share the problem that submitted packages are not necessarily audited or even checked by anyone.
 
   \section{Security Issues of the AUR} %(1 1/2 pages)
   \input{security_issues} % BENNETT
 
   \section{The Solution} %(4 1/2 pages)
+    \begin{figure}
+      \includegraphics[width=\paperwidth]{img/threat2.png}
+      \caption[Threat Prevention Strategy]{Strategy for Improving the Security of the AUR}
+      \label{fig:threat2}
+    \end{figure}
+
+    Defence against the two attacks mentioned above requires the availability of cryptographically secure release hashes for every version of every package; If those were available, an attack would result in a hash mismatch and therefore warn the user. However, the AURs design prevents any secure implementation on the server side.
+
     \subsection{Core Solution}  %(1 page)
     \input{core_solution} %LUKAS
     \subsection{Detailed Description} %(2 pages)
