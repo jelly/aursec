@@ -3,9 +3,9 @@
 \subsubsection*{general}
 The following paragraphs are based on \emph{Blockchain Beyond Bitcoin} \cite{Underwood}.
 
-A blockchain is a distributed database system which is not owned by a single user. Every user can see all transactions. If a user wants to add a transaction to the blockchain, the transaction is encrypted and sent to all users. The transaction is then verified. If the majority of the users validate the transaction, the data is added to the blockchain in a block. ``Transactions are secure, trusted, auditable, and immutable''. Blockchains don't need backups because every user has his own copy which is synchronized with all other blockchains in the network. 
+A blockchain is a distributed database system which is not owned by a single user. Every user can see all transactions. If a user wants to add a transaction to the blockchain, the transaction is encrypted and sent to all users. The transaction is then verified. If the majority of the users validate the transaction, the data is added to the blockchain in a block. ``Transactions are secure, trusted, auditable, and immutable''. Blockchains don't need backups because every user has his own copy which is synchronized with all other blockchains in the network.
 
-\paragraph*{Smart Contracts} are using computerized transaction protocols to execute the terms of the contract which are agreed by the users. This means that you are able to run code on the blockchain. 
+\paragraph*{Smart Contracts} are using computerized transaction protocols to execute the terms of the contract which are agreed by the users. They are executed by every miner. Since their code is in the chain, it is guaranteed to be immutable and therefore impossible to manipulate. This means that one is effectively able to run code on the blockchain.
 
 \subsubsection*{specific}
 Our blockchain has to fulfill several requirements:
@@ -18,11 +18,11 @@ Our blockchain has to fulfill several requirements:
 
 The blockchain of choice was Ethereum because it is the only production-ready infrastracture providing smart contracts. It even allows them to be written in a high-level language, \emph{Solidity}, which makes them straightforward to write and understand.
 
-\paragraph*{smart contracts} 
-Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. The Contract allows a user to commit one hash per versioned package. Further commits of hashes of the same versioned package will not be considered. The current consensus of a versioned package is the most often committed hash so the hash of a package is not fixed by the first commit.  
+\paragraph*{smart contracts}
+Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. The Contract allows a user to commit one hash per versioned package. Further commits of hashes of the same versioned package will not be considered. The current consensus of a versioned package is the most often committed hash so the hash of a package is not fixed by the first commit.
 
 \paragraph*{network}
 Like other blockchains, the Ethereum network is peer-2-peer, but private networks need to provide their own \emph{bootnode} through which peers announce themselves. Our bootnode is active 24/7 on a DigitalOcean droplet provided by our supervisor.
 
 \paragraph*{interfaces}
-The Ethereum blockchain provides 2 different interfaces, the IPC (interprocess communication), which provides an interactive javascript shell, and the HTTP RPC (remote procedure call) interface. The IPC interface of our blockchain is deactivated because users don't need to manually use the javascript shell: the only required interaction with the blockchain is through the shell script \texttt{aursec-chain}~\ref{sec:aursec-chain} and the Python script \texttt{aursec-tui}~\ref{sec:tui}. These scripts communicate with the blockchain trough the RPC interface.
+The Ethereum blockchain provides 2 different interfaces, the IPC (interprocess communication), which provides an interactive javascript shell, and the HTTP RPC (remote procedure call) interface. The IPC interface of our blockchain is deactivated because users don't need to manually use the javascript shell: the only required interaction with the blockchain is through the shell script \texttt{aursec-chain}~(Section~\ref{sec:aursec-chain}) and the Python script \texttt{aursec-tui}~(Section~\ref{sec:tui}). These scripts communicate with the blockchain trough the RPC interface.
