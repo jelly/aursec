@@ -3,9 +3,34 @@
 % Bash as a programming language
 % Python - Urwid
 
-\subsubsection*{Ethereum-Solidity}
-\subsubsection*{JSON RPC}
-The JSON PRC is used by the aursec-ethereum-blockchain for remote access to the block. Methods can be called or transactions can be sent by sending a JSON-Object to the block chain. The answer from the block chain is also always a JSON-Object. One big advantage is the easy parsing from and to JSON-Objects both in Bash and Python. The best example is visible in the code of aursec-tui (\ref{sec:tui}).
+\subsubsection*{Ethereum --- Solidity}
+Programming on a blockchain is a very interesting concept, but it also takes some getting used to. Thankfully, Solidity is a cleanly designed language which abstracts the blockchain away very nicely.
+
+In practice, writing for Ethereum turned out to be enjoyable. Solidity reads like a half-way mix between C and Javascript, and most things that we rely on in this project happen automatically: Guaranteeing that the code cannot be modified, the ACID properties of transactions, etc.
+This means that Ethereum, and Solidity in particular, are ideally suited for secure, \enquote{intelligent} (self-enforcing) databases.
+
+Because of that, our code reads largely like a pseudo-code description of the algorithm itself, making it easier to maintain and verify.
+Solidity even supports some automatic formal verification, but not yet for \texttt{struct}s, so we cannot make use of it for our program.
+
+\subsubsection*{JSON RPC} % TODO: @lukas I'm not sure whether this is interesting enough to be mentioned here?
+The JSON PRC is used by the aursec-ethereum-blockchain for remote access to the block. Methods can be called or transactions can be sent by sending a JSON-Object to the block chain. The answer from the block chain is also always a JSON-Object. One big advantage is the easy parsing from and to JSON-Objects both in Bash and Python. The best example is visible in the code of aursec-tui (Section~\ref{sec:tui}).
+
 \subsubsection*{Bash}
+Using Bash as a programming language is interesting. The syntax can be weird, even arcane; At the same time, we were often surprised by the advanced features that are provided directly inside the language, such as string substitutions, regular expression matching or associative arrays.
+In addition, the \texttt{coreutils} are very powerful; To our knowledge, only the Python standard library offers comparable functionality.
+
+Apart from getting used to the uncommon syntax, we found that the most important prerequisite for writing larger programs in Bash was to think in streams:
+Bash is not strictly imperative or functional, and it's certainly not object-oriented. Functions and programs can only return non-integer values as text on \texttt{stdout}, and it is often useful to provide them their input on \texttt{stdin} as well.
+We quickly found out that the most efficient way to structure programs is to use \texttt{while-read} loops, which iterate over an input stream of text.
+
+Embracing this design philosophy results in the natural use of highly concurrent pipelines that turn out to be very easy to understand, maintain and extend, far more so than equivalent imperative or object-oriented versions.
+Readers familiar with Java can compare this to Java 8's \texttt{java.util.stream} API.
+
+Writing safe and correct code is as hard as in C, mostly due to the lack of exception handling or a sensible alternative.
+We work around that using \texttt{set -e}, which cancels a program whenever an unused return value is non-zero, and exit handlers for cleanup.
+
+Bash doesn't provide or recommend a canonical testing framework, but associative arrays and \texttt{eval} allowed us to write our own system for basic unit tests with named test cases, commands to execute, and expected invariants.
+We used it to great effect in narrowing down the best \texttt{firejail} sandbox ruleset, e.g. preventing \texttt{makepkg} from writing to folders other than \texttt{pwd}.
+
 \subsubsection*{Python-Urwid}
 Urwid is a \emph{Terminal User Interface} (TUI) library for Python. It provides ready-made widgets which make it easy to create structured user interfaces.
