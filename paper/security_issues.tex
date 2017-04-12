@@ -31,11 +31,13 @@ When a maintainer wants to stop maintain a package, but the package is still use
 Orphan packages can be \emph{adopted} by any AUR user, at any time, without delay.
 This feature was designed to minimize update delay, which it does effectively; However, it also makes it easy for malicious agents to take over popular orphaned packages, manipulate them, and immediately orphan them afterwards.
 
+\begin{center}
 \begin{figure}
-	\includegraphics[width=\paperwidth]{img/threat.png}
+	\includegraphics[width=\textwidth,trim={0 0 245 0},clip]{img/threat.png}
 	\caption[Threat Assessment]{Threat Assessment of the Arch User Repository}
 	\label{fig:threat}
 \end{figure}
+\end{center}
 
 \subsection*{Concrete Attack Scenarios}
 We used the CORAS \cite{Dahl:2007} threat modeling language to arrange the security issues in such a way that concrete attack scenarios are intuitive to comprehend and retrace. The resulting threat diagram can be seen in Figure~\ref{fig:threat}.
