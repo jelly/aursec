@@ -1,7 +1,7 @@
 \subsubsection{aursec --- Architecture}
 \texttt{aursec} is the primary tool of our thesis. It implements the workflow of Section~\ref{sec:workflow}. Users can execute it passing a build folder (containing a \texttt{PKGBUILD}) as argument, and it will figure out the package name and version, hash the build files and VCS sources, compare them against the consensus, and present the result to the user.
 
-We designed \texttt{aursec} to be a good UNIX citizen:
+We designed \texttt{aursec} to follow UNIX conventions:
 
 \begin{itemize}
 \item Modular design \\ Multiple small tools doing one thing and doing it well
@@ -15,20 +15,20 @@ We designed \texttt{aursec} to be a good UNIX citizen:
 It then inserts itself into that pipeline and iterates over the lines of items using a \emph{while-read} loop and traverses the state machine (Section~\ref{sec:workflow} and Figure~\ref{fig:decision_workflow}) for each item.
 
 This architecture has several advantages: It is straightforward to understand because it follows standard UNIX patterns, which also makes it very maintainable.
-The free 3-level parallelism gained by the pipeline is a very useful advantage in itself, but even more so because all 3 tools are primarily I/O-bound: \texttt{aursec-hash} reads and hashes lots of files, \texttt{aursec-verify-hashes} constantly queries (and waits for) the blockchain, and \texttt{aursec} tends to spend much time waiting for user input.
+The free 3-level parallelism gained by the pipeline is a very useful advantage in itself, even more so because all 3 tools are primarily I/O-bound: \texttt{aursec-hash} reads and hashes lots of files, \texttt{aursec-verify-hashes} constantly queries (and waits for) the blockchain, and \texttt{aursec} tends to spend much time waiting for user input.
 Thus, the concurrency is even more important because it allows work to continue in the background while \texttt{aursec} waits for the user. Indeed, the background tasks tend to be finished in most practical situations before the user has had time to inspect the second or third warning. % NOTE: Maybe add an anecdote about how this is similarly good to the bulk-verification of sources in aursync vs yaourt?
 
 \subsubsection{aursec-hash}
 \texttt{aursec-hash} has the straightforward task of producing an ID (\texttt{\$pkgname-\$pkgver-\$pkgrel}) and a hash from \texttt{PKGBUILD}s.
 
 The id could be parsed from the \texttt{.SRCINFO}, which is a plain text file.
-But VCS packages do not have up-to-date version information in their \texttt{PKGBUILD}, which means that it must be interpreted my \texttt{makepkg} to update it; This is annoying, but we only source the \texttt{PKGBUILD} in a \texttt{firejail} sandbox to minimize the inherent risk of executing foreign turing-complete code.
+However, VCS packages do not have up-to-date version information in their \texttt{PKGBUILD}, which means that it must be interpreted my \texttt{makepkg} to update it; This is annoying, but we only source the \texttt{PKGBUILD} in a \texttt{firejail} sandbox to minimize the inherent risk of executing foreign turing-complete code.
 This allows us to get an accurate ID for VCS packages, but also to include the actual sources in the hash, thereby compensating for the lack of hashes in the \texttt{PKGBUILD} of VCS packages.
 
-The \texttt{PKGBUILD} is hashed after stripping it is comments, and VCS sources, if they exist, are hashed using a \texttt{find} command.
+The \texttt{PKGBUILD} is hashed after stripping its comments. VCS sources, if they exist, are hashed using a \texttt{find} command.
 Finally, all hashes are combined by another call to the hash command.
-Currently, \texttt{sha256sum} is used for it is good speed and security.
+Currently, \texttt{sha256sum} is used for its good speed and security.
 
 \subsubsection{aursec-verify-hashes}
 This tool fetches the current consensus for every package ID on \texttt{stdin}, computes whether it matches with the locally computed hash, and appends that data to the output stream.
-Doing this in a separate pipeline step is very worth it because requests from the blockchain are comparatively slow, making the concurrency highly useful.
+Doing this in a separate pipeline step is worth it because requests from the blockchain are comparatively slow, making the concurrency highly useful.
