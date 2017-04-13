@@ -22,12 +22,12 @@ Thus, the concurrency is even more important because it allows work to continue 
 \texttt{aursec-hash} has the straightforward task of producing an ID (\texttt{\$pkgname-\$pkgver-\$pkgrel}) and a hash from \texttt{PKGBUILD}s.
 
 The id could be parsed from the \texttt{.SRCINFO}, which is a plain text file.
-But VCS packages don't have up-to-date version information in their \texttt{PKGBUILD}, which means that it must be interpreted my \texttt{makepkg} to update it; This is annoying, but we only source the \texttt{PKGBUILD} in a \texttt{firejail} sandbox to minimize the inherent risk of executing foreign turing-complete code.
+But VCS packages do not have up-to-date version information in their \texttt{PKGBUILD}, which means that it must be interpreted my \texttt{makepkg} to update it; This is annoying, but we only source the \texttt{PKGBUILD} in a \texttt{firejail} sandbox to minimize the inherent risk of executing foreign turing-complete code.
 This allows us to get an accurate ID for VCS packages, but also to include the actual sources in the hash, thereby compensating for the lack of hashes in the \texttt{PKGBUILD} of VCS packages.
 
-The \texttt{PKGBUILD} is hashed after stripping it's comments, and VCS sources, if they exist, are hashed using a \texttt{find} command.
+The \texttt{PKGBUILD} is hashed after stripping it is comments, and VCS sources, if they exist, are hashed using a \texttt{find} command.
 Finally, all hashes are combined by another call to the hash command.
-Currently, \texttt{sha256sum} is used for it's good speed and security.
+Currently, \texttt{sha256sum} is used for it is good speed and security.
 
 \subsubsection{aursec-verify-hashes}
 This tool fetches the current consensus for every package ID on \texttt{stdin}, computes whether it matches with the locally computed hash, and appends that data to the output stream.

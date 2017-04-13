@@ -6,7 +6,7 @@ One of the most obvious problems is the installation procedure itself.
 The AUR doesn't host binary packages, which is a good thing. Instead, Arch packages are created locally from a bash file, the so-called \texttt{PKGBUILD}, containing metadata like name and version, the URLs and checksums of upstream sources, and functions for the compilation and packaging steps. % TODO: We may want to show an example PKGBUILD somewhere - but where? Maybe as appendix, with reference from here?
 
 The AUR contains these \texttt{PKGBUILDS} and possible patches to be applied to the upstream sources in a git repository per package.
-A package file can be produced by cloning it's repository and using a tool called \texttt{makepkg} \cite{wiki:PackageCreation}, which sources the script, downloads and verifies the sources, and calls the compilation and packaging functions.
+A package file can be produced by cloning it is repository and using a tool called \texttt{makepkg} \cite{wiki:PackageCreation}, which sources the script, downloads and verifies the sources, and calls the compilation and packaging functions.
 
 This means that users can verify what they are compiling as opposed to blindly trusting binaries created by third-parties, but also that maintainers of AUR packages have a means of executing arbitrary shell commands on users' machines.
 
@@ -60,7 +60,7 @@ This means that users don't have a way to verify the authenticity of the source 
 \subsection*{Tampered Packages: Malicious Maintainer}
 Users are also not adequately protected against malicious maintainers:
 
-Because it's so easy to gain access to a package, e.g. by adopting an orphan or simply by creating it, and nothing is verified or audited before publication, It's easy for a malicious agent to modify a package.
+Because it is so easy to gain access to a package, e.g. by adopting an orphan or simply by creating it, and nothing is verified or audited before publication, it is easy for a malicious agent to modify a package.
 And because the \texttt{PKGBUILD} is not signed or hashed, users will not notice if the build instructions for a specific package version were modified. This allows targeted attacks:
 
 If the time at which a target will update his machine is known and one has access to an AUR package which he is expected to update, malicious code can somehow be introduced into the corresponding \texttt{PKGBUILD} within that update window.
