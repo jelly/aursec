@@ -3,7 +3,7 @@
 \subsubsection*{general}
 The following paragraphs are based on \emph{Blockchain Beyond Bitcoin} \cite{Underwood}.
 
-A blockchain is a distributed database system which is not owned by a single user. Every user can see all transactions. If a user wants to add a transaction to the blockchain, the transaction is encrypted and sent to all users. The transaction is then verified. If the majority of the users validate the transaction, the data is added to the blockchain in a block. ``Transactions are secure, trusted, auditable, and immutable''. Blockchains do not need backups because users have their own copy which is synchronized with all other blockchains in the network.
+A blockchain is a distributed database system which is not owned by a single user. Every user can see all transactions. If a user wants to add a transaction to the blockchain, the transaction is encrypted and sent to all users. The transaction is then verified. If the majority of the users validate the transaction, the data is added to the blockchain in a block. ``Transactions are secure, trusted, auditable, and immutable'' \cite{Underwood}. Blockchains do not need backups because users have their own copy which is synchronized with all other blockchains in the network.
 
 \paragraph*{Smart Contracts} are using computerized transaction protocols to execute the terms of the contract which are agreed by the users. They are executed by every miner. Since their code is in the chain, it is guaranteed to be immutable and therefore impossible to manipulate. This means that one is effectively able to run code on the blockchain.
 
@@ -19,9 +19,7 @@ Our blockchain has to fulfill several requirements:
 The blockchain of choice was \emph{Ethereum} because it is the only production-ready infrastracture providing smart contracts. It even allows them to be written in a high-level language, \emph{Solidity}, which makes them straightforward to write and understand.
 
 \paragraph*{smart contracts}
-% TODO: @lukas the parent contract is not important or interesting for this paper.
-% Focus on functionality that is required by aursec.
-Aursec has two smart contracts. The first one is a formal contract, which allows the owner of the contract to delete the contract. The second contract is a child of the first. In this contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. The contract allows a user to commit one hash per versioned package. Further commits of hashes of the same versioned package will not be considered. The current consensus of a versioned package is the most often committed hash so the hash of a package is not fixed by the first commit.
+Aursec has two smart contracts. The first one is a formal contract. In the second contract are the ``user-functions'', which allows all users to send hash-commits and request the current consensus hash of a versioned package. The contract allows a user to commit one hash per versioned package. Further commits of hashes of the same versioned package will not be considered. The current consensus of a versioned package is the most often committed hash so the hash of a package is not fixed by the first commit.
 
 \paragraph*{network}
 Like other blockchains, the Ethereum network is peer-2-peer, but private networks need to provide their own \emph{bootnode} through which peers announce themselves. Our bootnode is active 24/7 on a DigitalOcean droplet provided by our supervisor.

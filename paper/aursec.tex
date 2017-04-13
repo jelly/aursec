@@ -77,7 +77,7 @@
   To address this issue, ftp://ftp.archlinux.org/income was created, where packages could be put until maintainers that were willing to do so could adopt them. However, this delay was too long, therefore another solution was needed.
   The next improvement were the Trusted User Repositories, where some privileged users, which were many more than the maintainers of before, were allowed to host their own repositories for anyone to use.
 
-  The \emph{Arch User Repository} (AUR) as the natural evolution: By removing all middlemen, everyone can now upload their packages to one central place. \cite{wiki:AUR}
+  The \emph{Arch User Repository} (AUR) was the natural evolution: By removing all middlemen, everyone can now upload their packages to one central place. \cite{wiki:AUR}
 
   The AUR is similar to PyPI (Python), NPM (Javascript) and rubygems.org, where all users can share their packages. They all share the problem that submitted packages are not necessarily audited or even checked by anyone.
 
@@ -91,7 +91,7 @@
       \label{fig:threat2}
     \end{figure}
 
-    Defence against the two attacks mentioned above requires the availability of cryptographically secure release hashes for every version of every package; If those were available, an attack would result in a hash mismatch and therefore warn the user. However, the AURs design prevents any secure implementation on the server side.
+    Defence against the two attacks mentioned above requires the availability of cryptographically secure release hashes for every version of every package. If those were available, an attack would result in a hash mismatch and therefore warn the user. However, the AURs design prevents any secure implementation on the server side.
 
     \subsection{Core Solution}  %(1 page)
     \input{core_solution} %LUKAS
@@ -101,12 +101,10 @@
     \input{detailedDescription/aursec} % Bennett
     \input{detailedDescription/aursec-chain} % LUKAS
     \input{detailedDescription/systemd} % Bennetty
-    % TODO: what else
     \subsection{Terminal User Interface} %(1/2 page)
     \input{tui}
     \subsection{Project Management} %(1 page)
     \input{projectManagement} % LUKAS
-    % TODO: What else?
 
   \section{Things we Learned} %(1 page)
   \input{learned.tex}
@@ -114,8 +112,6 @@
   % RPC
   % Bash as a programming language
   % Python - Urwid
-  % TODO: WHAT ELSE?
-
   \section{Evaluation} %(1 page)
   % We can probably already talk about our own experience? Our Data/ Data from outside ?
 
